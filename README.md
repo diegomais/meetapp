@@ -1,102 +1,236 @@
-![Logo](logo.png)
+<h1 align="center">
+    <img alt="Meetapp" src="/packages/web/src/assets/logo.svg" width="100px" /><br>
+    <b>Meetapp (an acronym for Meetup + App)</b> 👥
+</h1>
 
-# MeetApp
+<p align="center">
+  <img alt="GitHub license" src="https://img.shields.io/github/license/diegomais/meetapp?style=for-the-badge">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/diegomais/meetapp?style=for-the-badge">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/diegomais/meetapp?style=for-the-badge">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/diegomais/meetapp?style=for-the-badge">
+</p>
 
-> Meetapp 👥 (an acronym for Meetup + App): App for organizing, viewing and subscribing meetups for developer.
+<p align="center">
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sparkles-features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <a href="#seat-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#memo-license">License</a>
+</p>
 
-Separate projects are available below:
+<br>
 
-* Back-end: [https://github.com/diegomais/meetapp-backend](https://github.com/diegomais/meetapp-backend)
-* Front-end: [https://github.com/diegomais/meetapp-web](https://github.com/diegomais/meetapp-web)
-* Mobile: [https://github.com/diegomais/meetapp-mobile](https://github.com/diegomais/meetapp-mobile)
+## :rocket: Technologies
 
-## Getting Started
+This project was developed with the following technologies:
 
-These instructions will get you a copy of the full project up and running on your local machine for development and testing purposes.
+- [Node.js](https://nodejs.org)
+- [React](https://reactjs.org)
+- [React Native](https://facebook.github.io/react-native/)
 
-The project can be built with npm or yarn, so choose one of the approach bellow in case you don't have any installed on your system.
+Extras:
 
-* **Npm** is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer. [Download Node.js](https://nodejs.org/en/download/)
+- Main Libs
+  - [Express](https://expressjs.com)
+  - [Sequelize ORM](https://sequelize.org)
+  - [Redux](https://redux.js.org)
+  - [redux-saga](https://redux-saga.js.org)
+- Style
+  - [EditorConfig](https://editorconfig.org)
+  - [ESLint](https://eslint.org)
+  - [Prettier](https://prettier.io)
 
-* **Yarn** is a package manager built by Facebook Team and seems to be faster than npm in general.  [Download Yarn](https://yarnpkg.com/en/docs/install)
+## :sparkles: Features
 
-* **React Native CLI** is a package that contains tools and helpers for React Native projects in form of a command line tool.  [Download React Native CLI](https://facebook.github.io/react-native/docs/getting-started)
+### API
 
-### Setting up Databases and Services
+#### File upload
 
-The project uses [PostgreSQL](https://www.postgresql.org), [MongoDB](https://www.mongodb.com) and [Redis](https://redis.io).
+Create a file upload route that records the path and file name in a table and returns all data from the file.
 
-We recommend use [Docker](https://www.docker.com) to install and run the databases and services above.
+#### Meetups management
 
-### Back-end
+The user can register meetups on the platform with meetup title, description, location, date and time and image (banner). All fields are required. Also add a user_id field that stores the user ID that organizes the event.
 
-* To download the project follow the instructions bellow:
+It is not possible to register meetups with dates that have passed.
+
+User can edit all meetup data from meetups that has not yet happened and that is hosted by the user.
+
+User can list meetups that are organized by the logged-in user.
+
+User can delete meetups organized by him that have not yet happened. The delete action remove the meetup from database.
+
+#### Meetups Subscription
+
+User can subscribe for meetups that he does not organize.
+
+User can not subscribe for meetups that have already happened.
+
+User can not subscribe for the same meetup twice.
+
+User can not join two meetups that happen at the same time.
+
+Whenever a user subscribe for a meetup, an email is sent to host containing the data related to registered user.
+
+#### List of meetups
+
+User can filter and list meetups by date (not by time), results from that listing are paginated by 10 items per page. Below is an example call to the meetups listing route:
 
 ```
-1. git clone https://github.com/diegomais/meetapp-backend.git
-2. cd meetapp-backend
+http://localhost:3333/meetups?date=2019-07-01&page=2
 ```
 
-* Install the dependencies and start the server:
+In this example, the API will list page 2 of the meetups that will take place on July 1st 2019.
 
-```
-3. yarn install
-4. yarn dev
-```
+In that list is also returned the organizer data.
 
-or
+#### List of subscriptions
 
-```
-3. npm install
-4. npm dev
-```
+User can list the meetups the logged-in user is enrolled in.
 
-### Front-end
+Are listed only meetups that have not yet happened and order closer meetups as the first on the list.
 
-* To download the project follow the instructions bellow:
+### Web
 
-```
-1. git clone https://github.com/diegomais/meetapp-web.git
-2. cd meetapp-web
-```
+#### Sign in
 
-* Install the dependencies and start the project:
+User can authenticate using email and password.
 
-```
-3. yarn install
-4. yarn start
-```
+#### Sign up
 
-or
+User can sign up with name, email and password.
 
-```
-3. npm install
-4. npm start
-```
+#### Dashboard
+
+User can list the meetups they organize and click to see details of a meetup.
+
+From this page the user can navigate to meetup creation page.
+
+#### Details
+
+User can view details of a previously registered meetup.
+
+In this page user can edit information of a meetup or even cancel a meetup.
+
+#### Create or edit
+
+User can create or edit information about meetups he organizes.
+
+Display the meetup banner image preview when the user selects an image.
+
+Fields are validated.
+
+#### Profile
+
+User can edit your profile.
+
+Fields are validated.
 
 ### Mobile
 
-* To download the project follow the instructions bellow:
+#### Sign in
 
-```
-1. git clone https://github.com/diegomais/meetapp-mobile.git
-2. cd meetapp-mobile
-```
+User can authenticate using email and password.
 
-* Start the application:
+#### Sign up
 
-```
-3. react-native run-ios
-```
+User can sign up with name, email and password.
 
-## Author
+#### Dashboard
 
-Diego Mais
-* [diegomais@live.com](mailto:diegomais@live.com)
-* [diegomais.github.io](http://diegomais.github.io)
-* [github.com/diegomais](http://github.com/diegomais)
-* [linkedin.com/in/diegomais](http://linkedin.com/in/diegomais)
+User can browse meetups by date. This screen use infinite scroll.
 
- ## License
+From this screen the user can subscribe for a Meetup.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+#### Subscriptions
+
+The user can view their meetup subscriptions.
+
+In this screen user can unsubscribe.
+
+#### Profile
+
+The user can edit their profile.
+
+Fields are validated.
+
+## :seat: Getting started
+
+These instructions will get you a copy of the full project up and running on your local machine for development and testing purposes.
+
+#### Setting up the development environment
+
+The project is developed using Git. Git is a free and open source distributed version control system. [Download Git](https://git-scm.com/downloads).
+
+The project can be built with npm or Yarn, so choose one of the approach bellow in case you don't have any installed on your system.
+
+- **npm** is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer. [Download Node.js](https://nodejs.org/en/download/).
+- **Yarn** is a package manager built by Facebook Team and seems to be faster than npm in general. [Download Yarn](https://yarnpkg.com/en/docs/install).
+
+#### Cloning the project
+
+You can obtain the project by running the instruction bellow on your terminal:
+
+`git clone https://github.com/diegomais/meetapp.git`
+
+### API
+
+#### Installing dependencies and running the server
+
+Run the instructions bellow inside `packages/api` directory:
+
+1. `npm install`
+2. `npm run dev`
+
+or
+
+1. `yarn install`
+2. `yarn dev`
+
+### Web
+
+#### Installing dependencies and running the web application
+
+Run the instructions bellow inside `packages/web` directory:
+
+1. `npm install`
+2. `npm start`
+
+or
+
+1. `yarn install`
+2. `yarn start`
+
+### Mobile
+
+#### Setting up the development environment
+
+Follow the instructions for React Native CLI available in the official [React Native Documentation](https://reactnative.dev/docs/environment-setup).
+
+#### Installing dependencies and running the mobile application
+
+Run the instructions bellow inside `packages/mobile` directory:
+
+1. `npm install`
+2. `npm start`
+
+or
+
+1. `yarn install`
+2. `yarn start`
+
+## 🤔 How to contribute
+
+- Fork this repository;
+- Create a branch with your feature: `git checkout -b my-feature`;
+- Commit your changes: `git commit -m '[feat](scope) My new feature'`;
+- Push to your branch: `git push origin my-feature`.
+
+After the merge of your pull request is done, you can delete your branch.
+
+## :memo: License
+
+This project is under the MIT license. See the [LICENSE](LICENSE) for more details.
+
+---
+
+Made with :heart: by [Diego Mais](https://diegomais.github.io/) :wave:.
