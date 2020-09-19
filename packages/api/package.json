@@ -1,10 +1,11 @@
 {
   "name": "meetapp",
   "version": "1.0.0",
-  "main": "./src/server.js",
+  "main": "src/server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./src/server.js",
+    "heroku-postbuild": "npx sequelize-cli db:migrate",
+    "dev": "nodemon src/server.js",
     "queue": "nodemon src/queue.js"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^6.0.0",

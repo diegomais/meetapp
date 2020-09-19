@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import app from './app';
 
 /** Create a constant reference to port declared on environment variables
