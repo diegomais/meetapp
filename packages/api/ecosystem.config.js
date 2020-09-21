@@ -8,7 +8,7 @@ module.exports = {
     {
       name: 'app',
       script: './build/server.js',
-      instances: 'max',
+      instances: 5,
       env: {
         NODE_ENV: 'development',
       },
