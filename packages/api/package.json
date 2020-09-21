@@ -4,7 +4,8 @@
   "main": "src/server.js",
   "license": "MIT",
   "scripts": {
-    "heroku-postbuild": "npx sequelize-cli db:migrate",
+    "heroku-postbuild": "npx sequelize-cli db:migrate && ./node_modules/.bin/sucrase ./src -d ./build --transforms javascript,imports",
+    "start": "pm2-runtime start ecosystem.config.js --env production",
     "dev": "nodemon src/server.js",
     "queue": "nodemon src/queue.js"
   },
@@ -21,6 +22,7 @@
     "nodemailer-express-handlebars": "^3.1.0",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
+    "pm2": "^4.4.1",
     "sequelize": "^5.15.1",
     "yup": "^0.27.0"
   },
