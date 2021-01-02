@@ -4317,9 +4317,9 @@ synchronous-promise@^2.0.6:
   integrity sha512-LO95GIW16x69LuND1nuuwM4pjgFGupg7pZ/4lU86AmchPKrhk0o2tpMU2unXRrqo81iAFe1YJ0nAGEVwsrZAgg==
 
 systeminformation@^4.23.3:
-  version "4.30.6"
-  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-4.30.6.tgz#b56074968f2ea28ac118f23221c449b0f763db22"
-  integrity sha512-NV7zo9NU7fWSuiCORZmMLe90cFrrTS6jfalrQ0/5B7JGQ2ei15c2gmfICBwWdmviyv/FXAFVReySxOtDDkppqw==
+  version "4.33.5"
+  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-4.33.5.tgz#ca0a4eb6e739d7eab30d375401917ea1076f8de8"
+  integrity sha512-LxsyvCB4uYqzjEQUH5cNt8TCNZsEc5oHV5LfT96huYAj3w9U0TGQtg7CiTWYzU4aBnBAejXWct6O0nlZhzzaqQ==
 
 table@^5.2.3:
   version "5.4.1"
