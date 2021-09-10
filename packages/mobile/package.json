@@ -33,10 +33,10 @@
     "yup": "0.32.9"
   },
   "devDependencies": {
-    "@babel/core": "7.5.5",
-    "@babel/runtime": "7.5.5",
+    "@babel/core": "7.15.5",
+    "@babel/runtime": "7.15.4",
     "@react-native-community/eslint-config": "0.0.5",
-    "babel-eslint": "10.0.2",
+    "babel-eslint": "10.1.0",
     "babel-jest": "24.9.0",
     "babel-plugin-root-import": "6.4.1",
     "eslint": "6.2.1",
